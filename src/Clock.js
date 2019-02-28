@@ -1,4 +1,5 @@
 import React from 'react';
+import './Clock.css';
 
 class Clock extends React.Component {
     state = {time: console.log(this.time)}
@@ -11,7 +12,7 @@ class Clock extends React.Component {
     render() {
         return (
             <div className="time">
-                The time is: {this.state.time}
+                <h3> {this.state.time}</h3>
             </div>
         );
     }
