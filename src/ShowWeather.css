@@ -1,0 +1,29 @@
+
+.icon-left{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.icon-right{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.show-weather{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.show-weather.winter{
+    background-color: rgb(196, 229, 288);
+}
+.show-weather.winter i{
+    color: blue;
+}
+.show-weather.summer{
+    background-color: rgb(236, 190, 136);
+}
+.show-weather.summer i{
+    color: red;
+}

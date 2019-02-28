@@ -1,28 +1,47 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ShowWeather from './ShowWeather';
+import Spinner from './Spinner';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+
+
+class App extends React.Component{
+    
+    state = {lat:null, errmessage: ''}
+    componentDidMount() {
+        window.navigator.geolocation.getCurrentPosition(
+            position => this.setState({lat:position.coords.latitude}), 
+            err => this.setState({errmessage:err.message})
+        );
+    }
+    renderComponent(){
+        if(this.state.errmessage && !this.state.lat){
+            return (
+                <div>
+                     <h2 className="ui inverted red button">Error Message: {this.state.errmessage}</h2>
+                </div>
+            )
+        }else if(this.state.lat && !this.state.errmessage){
+            
+             return(
+                <div>
+                    <ShowWeather lat={this.state.lat}/>
+                </div>
+            )
+        }
+        else{
+            return(
+                <Spinner message="Please allow location request" />
+            )
+        }
+    }
+    render(){
+        
+        return(
+            <div>{this.renderComponent()}</div>
+        )
+        
+       
+    }
 }
 
-export default App;
+export default App
