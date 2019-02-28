@@ -1,6 +1,7 @@
 import React from 'react';
 import ShowWeather from './ShowWeather';
 import Spinner from './Spinner';
+import Clock from './Clock';
 
 
 
@@ -24,6 +25,7 @@ class App extends React.Component{
             
              return(
                 <div>
+                    <Clock />
                     <ShowWeather lat={this.state.lat}/>
                 </div>
             )
